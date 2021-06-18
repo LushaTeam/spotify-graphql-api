@@ -1,0 +1,41 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:node/recommended",
+    "prettier"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "func-names": "off",
+    "radix": ["error", "as-needed"],
+    "node/no-unsupported-features/es-syntax": "off",
+    "no-global-assign": "warn",
+    "no-underscore-dangle": ["error", {"allow": ["_id"]}],
+    "no-plusplus": "off",
+    "import/prefer-default-export": "warn",
+    "no-param-reassign": "warn",
+    "class-methods-use-this": ["error", { "exceptMethods": ["visitFieldDefinition"] }],
+    "no-use-before-define": "warn",
+    "no-restricted-syntax": "warn",
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "no-cond-assign": "warn",
+    "consistent-return": "off"
+  }
+}
