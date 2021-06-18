@@ -23,11 +23,7 @@ module.exports = {
       return parent.genres.map((genre) => snakeCase(genre).toUpperCase());
     },
     albums: async (parent, args, { authorization, spotifyAPI }) => {
-      const response = await spotifyAPI.get(`/artists/${parent.id}/albums`, {
-        headers: { authorization },
-      });
-
-      return response.data.items;
+      // How do we resolve this?
     },
   },
 };
