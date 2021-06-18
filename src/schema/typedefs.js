@@ -17,6 +17,9 @@ const root = gql`
     NU_METAL
     POST_GRUNGE
     RAP_METAL
+    POP
+    PUNK
+    INDIE
   }
 `;
 
