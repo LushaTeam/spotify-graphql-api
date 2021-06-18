@@ -1,3 +1,4 @@
+const { getArtist } = require('../artists/utils');
 const { errorHandler } = require('../utils');
 
 module.exports = {
@@ -17,20 +18,12 @@ module.exports = {
 
   Album: {
     artists: async (parent, args, { authorization, spotifyAPI }) => {
+      // We moved n+1 problem from client to server
       const { artists } = parent;
 
-      const ids = artists
-        .slice(1)
-        .reduce(
-          (currentIds, artist) => `${currentIds},${artist.id}`,
-          artists[0].id,
-        );
-
-      const response = await spotifyAPI.get(`/artists?ids=${ids}`, {
-        headers: { authorization },
-      });
-
-      return response.data.artists;
+      return Promise.all(
+        artists.map((artist) => getArtist(artist.id, authorization)),
+      );
     },
   },
 };
