@@ -12,8 +12,6 @@ const root = gql`
     _: String
   }
 
-  scalar Date
-
   enum Genre {
     ALTERNATIVE_METAL
     NU_METAL

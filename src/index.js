@@ -1,5 +1,4 @@
 const { ApolloServer } = require('apollo-server-express');
-const { DateResolver } = require('graphql-scalars');
 
 const app = require('./app');
 const resolvers = require('./schema/resolvers');
@@ -11,7 +10,7 @@ const PORT = 3000;
 const startApolloServer = async () => {
   const server = new ApolloServer({
     typeDefs,
-    resolvers: [...resolvers, { Date: DateResolver }],
+    resolvers,
     context: ({ req, res }) => ({
       authorization: req.headers.authorization,
       spotifyAPI,

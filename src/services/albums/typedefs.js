@@ -11,7 +11,7 @@ module.exports = gql`
     label: String
     genres: [Genre!]
     popularity: Int
-    release_date: Date!
+    release_date: String!
     total_tracks: Int!
     artists: [Artist!]!
   }
