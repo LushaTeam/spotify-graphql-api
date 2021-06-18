@@ -17,6 +17,7 @@ module.exports = {
 
   Album: {
     artists: async (parent, args, { authorization, spotifyAPI }) => {
+      // N + 1 solved using the API correctly
       const { artists } = parent;
 
       const ids = artists
