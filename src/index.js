@@ -1,4 +1,5 @@
 const { ApolloServer } = require('apollo-server-express');
+const depthLimit = require('graphql-depth-limit');
 
 const app = require('./app');
 const resolvers = require('./schema/resolvers');
@@ -17,6 +18,8 @@ const startApolloServer = async () => {
     }),
     introspection: true,
     playground: true,
+    // limit query depth
+    validationRules: [depthLimit(2)],
   });
 
   await server.start();
