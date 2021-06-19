@@ -7,8 +7,8 @@ module.exports = gql`
 
   type Artist {
     id: ID!
-    followers: Int!
     name: String!
+    followers: Int!
     popularity: Int!
     genres: [Genre!]!
     albums: [Album!]!
