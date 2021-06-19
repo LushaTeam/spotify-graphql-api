@@ -1,7 +1,54 @@
 const axios = require('axios');
 
+const errorHandler = require('../error-handler');
+
 const spotifyAPI = axios.create({
   baseURL: 'https://api.spotify.com/v1',
 });
 
-module.exports = spotifyAPI;
+const getArtist = async (id, authorization) => {
+  try {
+    const response = await spotifyAPI.get(`/artists/${id}`, {
+      headers: { authorization },
+    });
+
+    return response.data;
+  } catch (e) {
+    return errorHandler(e);
+  }
+};
+
+const getArtists = async (ids, authorization) => {
+  const response = await spotifyAPI.get(`/artists?ids=${ids}`, {
+    headers: { authorization },
+  });
+
+  return response.data.artists;
+};
+
+const getAlbum = async (id, authorization) => {
+  try {
+    const response = await spotifyAPI.get(`/albums/${id}`, {
+      headers: { authorization },
+    });
+
+    return response.data;
+  } catch (e) {
+    return errorHandler(e);
+  }
+};
+
+const getAlbumsByArtistId = async (id, authorization) => {
+  const response = await spotifyAPI.get(`/artists/${id}/albums`, {
+    headers: { authorization },
+  });
+
+  return response.data.items;
+};
+
+module.exports = {
+  getArtist,
+  getArtists,
+  getAlbum,
+  getAlbumsByArtistId,
+};
