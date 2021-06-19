@@ -1,22 +1,13 @@
-const { errorHandler } = require('../utils');
+const { getAlbum } = require('../../api/spotify-api');
 
 module.exports = {
   Query: {
-    album: async (parent, { id }, { authorization, spotifyAPI }, info) => {
-      try {
-        const response = await spotifyAPI.get(`/albums/${id}`, {
-          headers: { authorization },
-        });
-
-        return response.data;
-      } catch (e) {
-        return errorHandler(e);
-      }
-    },
+    album: async (parent, { id }, { authorization }, info) =>
+      getAlbum(id, authorization),
   },
 
   Album: {
-    artists: async (parent, args, { authorization, spotifyAPI }) => {
+    artists: async (parent, args, { authorization }) => {
       // how do we resolve this?
     },
   },

@@ -20,6 +20,4 @@ const errorHandler = (e) => {
   }
 };
 
-module.exports = {
-  errorHandler,
-};
+module.exports = errorHandler;
