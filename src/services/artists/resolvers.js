@@ -1,12 +1,9 @@
 const snakeCase = require('lodash.snakecase');
-const { getArtist } = require('./utils');
-
-const { errorHandler } = require('../utils');
 
 module.exports = {
   Query: {
     artist: async (parent, { id }, { authorization, spotifyAPI }, info) =>
-      getArtist(id, authorization),
+      spotifyAPI.getArtist(id, authorization),
   },
 
   Artist: {
