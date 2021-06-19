@@ -1,22 +1,12 @@
-const { errorHandler } = require('../utils');
-
 module.exports = {
   Query: {
-    album: async (parent, { id }, { authorization, spotifyAPI }, info) => {
-      try {
-        const response = await spotifyAPI.get(`/albums/${id}`, {
-          headers: { authorization },
-        });
-
-        return response.data;
-      } catch (e) {
-        return errorHandler(e);
-      }
-    },
+    album: (parent, { id }, { authorization, spotifyAPI }, info) =>
+      spotifyAPI.getAlbum(id, authorization),
   },
 
   Album: {
-    artists: async (parent, args, { authorization, spotifyAPI }) => {
+    artists: (parent, args, { authorization, spotifyAPI }) => {
+      // N + 1 solved using the API correctly
       const { artists } = parent;
 
       const ids = artists
@@ -26,11 +16,7 @@ module.exports = {
           artists[0].id,
         );
 
-      const response = await spotifyAPI.get(`/artists?ids=${ids}`, {
-        headers: { authorization },
-      });
-
-      return response.data.artists;
+      return spotifyAPI.getArtists(ids, authorization);
     },
   },
 };
