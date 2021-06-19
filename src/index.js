@@ -1,6 +1,7 @@
 const { ApolloServer } = require('apollo-server-express');
 
 const app = require('./app');
+const spotifyAPI = require('./api/spotify-api');
 const resolvers = require('./schema/resolvers');
 const typeDefs = require('./schema/typedefs');
 
@@ -12,6 +13,7 @@ const startApolloServer = async () => {
     resolvers,
     context: ({ req, res }) => ({
       authorization: req.headers.authorization,
+      spotifyAPI,
     }),
     introspection: true,
     playground: true,

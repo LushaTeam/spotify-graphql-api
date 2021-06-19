@@ -12,6 +12,4 @@ const app = express();
 // Https
 // More middlewares...
 
-app.use('/api/graphql');
-
 module.exports = app;

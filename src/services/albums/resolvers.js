@@ -1,9 +1,7 @@
-const { getAlbum } = require('../../api/spotify-api');
-
 module.exports = {
   Query: {
-    album: async (parent, { id }, { authorization }, info) =>
-      getAlbum(id, authorization),
+    album: async (parent, { id }, { authorization, spotifyAPI }, info) =>
+      spotifyAPI.getAlbum(id, authorization),
   },
 
   Album: {
