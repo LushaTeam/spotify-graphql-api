@@ -2,15 +2,14 @@ const snakeCase = require('lodash.snakecase');
 
 module.exports = {
   Query: {
-    artist: async (parent, { id }, { authorization, spotifyAPI }, info) =>
+    artist: (parent, { id }, { authorization, spotifyAPI }, info) =>
       spotifyAPI.getArtist(id, authorization),
   },
 
   Artist: {
     followers: (parent) => parent.followers.total,
-    genres: (parent) => {
-      return parent.genres.map((genre) => snakeCase(genre).toUpperCase());
-    },
+    genres: (parent) =>
+      parent.genres.map((genre) => snakeCase(genre).toUpperCase()),
     albums: async (parent, args, { authorization }) => {
       // How do we resolve this?
     },
