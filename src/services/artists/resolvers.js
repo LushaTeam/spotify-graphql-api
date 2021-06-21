@@ -1,3 +1,5 @@
+const { ApolloError } = require('apollo-server-express');
+
 const snakeCase = require('lodash.snakecase');
 
 module.exports = {
@@ -11,7 +13,8 @@ module.exports = {
     genres: (parent) =>
       parent.genres.map((genre) => snakeCase(genre).toUpperCase()),
 
-    albums: (parent, args, { authorization, spotifyAPI }) =>
-      spotifyAPI.getAlbumsByArtistId(parent.id, authorization),
+    albums: (parent, args, { authorization, spotifyAPI }) => {
+      throw new ApolloError('In the end, the albums didnt matter');
+    },
   },
 };
