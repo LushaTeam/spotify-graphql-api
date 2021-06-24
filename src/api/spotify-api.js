@@ -26,6 +26,14 @@ const getArtists = async (ids, authorization) => {
   return response.data.artists;
 };
 
+const getAlbumsByArtistId = async (id, authorization) => {
+  const response = await spotifyAPI.get(`/artists/${id}/albums`, {
+    headers: { authorization },
+  });
+
+  return response.data.items;
+};
+
 const getAlbum = async (id, authorization) => {
   try {
     const response = await spotifyAPI.get(`/albums/${id}`, {
@@ -36,14 +44,6 @@ const getAlbum = async (id, authorization) => {
   } catch (e) {
     return errorHandler(e);
   }
-};
-
-const getAlbumsByArtistId = async (id, authorization) => {
-  const response = await spotifyAPI.get(`/artists/${id}/albums`, {
-    headers: { authorization },
-  });
-
-  return response.data.items;
 };
 
 module.exports = {
