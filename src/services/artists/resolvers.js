@@ -14,7 +14,7 @@ module.exports = {
       parent.genres.map((genre) => snakeCase(genre).toUpperCase()),
 
     albums: (parent, args, { authorization, spotifyAPI }) => {
-      throw new ApolloError('In the end, the albums didnt matter');
+      throw new ApolloError('In the end, the album didnt matter');
     },
   },
 };
