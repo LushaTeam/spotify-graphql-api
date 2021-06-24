@@ -11,6 +11,6 @@ module.exports = gql`
     followers: Int!
     popularity: Int!
     genres: [Genre!]!
-    albums: [Album!]!
+    albums: [Album!]
   }
 `;
