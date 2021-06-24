@@ -8,10 +8,6 @@ const root = gql`
     _: String
   }
 
-  type Mutation {
-    _: String
-  }
-
   enum Genre {
     ALTERNATIVE_METAL
     NU_METAL
