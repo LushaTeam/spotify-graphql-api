@@ -8,10 +8,6 @@ const root = gql`
     _: String
   }
 
-  type Mutation {
-    _: String
-  }
-
   scalar Date
 
   enum Genre {
